@@ -1,5 +1,5 @@
 # Export
-export PATH=/home/yusuf/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
