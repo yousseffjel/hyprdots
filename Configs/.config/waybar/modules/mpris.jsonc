@@ -8,7 +8,7 @@
         "status-icons": {
             "paused": "⏸"
         },
-       // "ignored-players": ["thorium-browser"]
+        // "ignored-players": ["firefox"]
         "max-length": 1000,
         "interval": 1
     },

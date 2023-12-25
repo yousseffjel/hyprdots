@@ -17,7 +17,6 @@ xdg-desktop-portal-gtk
 trash-cli
 timeshift
 grub-btrfs
-ungoogled-chromium-bin
 opendoas
 rhythmbox
 qbittorrent
@@ -63,9 +62,8 @@ ttf-iosevka-nerd
 gvfs
 wlsunset
 syncthing
-deemix-gui-appimage
 unrar
 auto-cpufreq
-thorium-browser-bin
+floorp
 htop
 tlp

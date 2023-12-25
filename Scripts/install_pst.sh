@@ -1,8 +1,8 @@
 #!/bin/bash
-#|---/ /+-------------------------+---/ /|#
-#|--/ /-| Script to configure etc |--/ /-|#
-#|-/ /--| Prasanth Rangan         |-/ /--|#
-#|/ /---+-------------------------+/ /---|#
+#|---/ /+--------------------------------------+---/ /|#
+#|--/ /-| Script to apply post install configs |--/ /-|#
+#|-/ /--| Prasanth Rangan                      |-/ /--|#
+#|/ /---+--------------------------------------+/ /---|#
 
 source global_fn.sh
 if [ $? -ne 0 ] ; then
@@ -25,6 +25,8 @@ if pkg_installed sddm
         sudo touch /etc/sddm.conf.d/kde_settings.conf
         sudo cp /etc/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.t2.bkp
         sudo cp /usr/share/sddm/themes/corners/kde_settings.conf /etc/sddm.conf.d/
+    else
+        echo "sddm is already configured..."
     fi
 
     if [ ! -f /usr/share/sddm/faces/${USER}.face.icon ] && [ -f ${CloneDir}/Source/misc/${USER}.face.icon ] ; then
@@ -34,18 +36,6 @@ if pkg_installed sddm
 
 else
     echo "WARNING: sddm is not installed..."
-fi
-
-
-# pacman
-if [ -f /etc/pacman.conf ] && [ ! -f /etc/pacman.conf.t2.bkp ]
-    then
-
-    echo "adding extra spice to pacman..."
-    sudo cp /etc/pacman.conf /etc/pacman.conf.t2.bkp
-    sudo sed -i "/^#Color/c\Color\nILoveCandy
-    /^#VerbosePkgLists/c\VerbosePkgLists
-    /^#ParallelDownloads/c\ParallelDownloads = 5" /etc/pacman.conf
 fi
 
 
@@ -61,16 +51,7 @@ else
 fi
 
 
-# zsh
-if pkg_installed zsh
-    then
+# shell
+./restore_shl.sh ${getShell}
 
-    if [ "$SHELL" != "/usr/bin/zsh" ] ; then
-        echo "changing shell to zsh..."
-        chsh -s $(which zsh)
-    fi
-
-else
-    echo "WARNING: zsh is not installed..."
-fi
 
